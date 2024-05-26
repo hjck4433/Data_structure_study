@@ -3,6 +3,7 @@ package test05_sort;
 import Structure05_sort.BubbleSort;
 import Structure05_sort.InsertionSort;
 import Structure05_sort.MergeSort;
+import Structure05_sort.QuickSort;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -13,6 +14,7 @@ public class SortTest extends BaseSortTest {
     private BubbleSort bubbleSort = new BubbleSort();
     private InsertionSort insertionSort = new InsertionSort();
     private MergeSort mergeSort = new MergeSort();
+    private QuickSort quickSort = new QuickSort();
 
     @Test
     void bubbleSort() {
@@ -33,7 +35,7 @@ public class SortTest extends BaseSortTest {
     @Test
     void insertionSort() {
         for (int i = 1; i < 100; i++){
-            // 버블 정렬의 테스트 방식과 동일
+            // 맨 위 버블 정렬의 테스트 방식과 동일
             int[] arr = createRandomArray(i);
             int[] expected = Arrays.copyOf(arr, arr.length);
             Arrays.sort(expected);
@@ -45,11 +47,23 @@ public class SortTest extends BaseSortTest {
     @Test
     void mergeSort() {
         for (int i = 1; i < 100; i++) {
-            // 버블 정렬의 테스트 방식과 동일
+            // 맨 위 버블 정렬의 테스트 방식과 동일
             int[] arr = createRandomArray(i);
             int[] expected = Arrays.copyOf(arr, arr.length);
             Arrays.sort(expected);
             mergeSort.sort(arr);
+            assertArrayEquals(expected, arr);
+        }
+    }
+
+    @Test
+    void quickSort() {
+        for (int i = 1; i < 100; i++) {
+            // 맨 위 버블 정렬의 테스트 방식과 동일
+            int[] arr = createRandomArray(i);
+            int[] expected = Arrays.copyOf(arr, arr.length);
+            Arrays.sort(expected);
+            quickSort.sort(arr);
             assertArrayEquals(expected, arr);
         }
     }
