@@ -2,6 +2,7 @@ package test05_sort;
 
 import Structure05_sort.BubbleSort;
 import Structure05_sort.InsertionSort;
+import Structure05_sort.MergeSort;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class SortTest extends BaseSortTest {
     private BubbleSort bubbleSort = new BubbleSort();
     private InsertionSort insertionSort = new InsertionSort();
+    private MergeSort mergeSort = new MergeSort();
 
     @Test
     void bubbleSort() {
@@ -36,6 +38,18 @@ public class SortTest extends BaseSortTest {
             int[] expected = Arrays.copyOf(arr, arr.length);
             Arrays.sort(expected);
             insertionSort.sort(arr);
+            assertArrayEquals(expected, arr);
+        }
+    }
+
+    @Test
+    void mergeSort() {
+        for (int i = 1; i < 100; i++) {
+            // 버블 정렬의 테스트 방식과 동일
+            int[] arr = createRandomArray(i);
+            int[] expected = Arrays.copyOf(arr, arr.length);
+            Arrays.sort(expected);
+            mergeSort.sort(arr);
             assertArrayEquals(expected, arr);
         }
     }
